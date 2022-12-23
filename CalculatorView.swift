@@ -67,7 +67,8 @@ struct CalculatorView: View {
                 
                 Button("÷") {
                 }
-                .padding(.vertical, 40)
+                .font(.largeTitle)
+                .padding(.vertical, 30)
                 .frame(maxWidth: .infinity)
                 .background(Color.orange)
                 
@@ -75,21 +76,21 @@ struct CalculatorView: View {
             HStack (spacing: 1){
                 
                 Button("7") {
-                    result += (result * 10) + 7
+                    process(digit: 7)
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 
                 
                 Button("8") {
-                    result += (result * 10) + 8
+                    process(digit: 8)
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 
                 
                 Button("9") {
-                    result += (result * 10) + 9
+                    process(digit: 9)
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
@@ -97,6 +98,7 @@ struct CalculatorView: View {
                 
                 Button("X") {
                 }
+                .font(.title2)
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 .background(Color.orange)
@@ -160,8 +162,8 @@ struct CalculatorView: View {
                     calculate()
                     operation = 1
                 }
-                
-                .padding(.vertical, 40)
+                .font(.largeTitle)
+                .padding(.vertical, 30)
                 .frame(maxWidth: .infinity)
                 .background(Color.orange)
                 
@@ -184,8 +186,8 @@ struct CalculatorView: View {
                     
                     Button("=") {
                     }
-                    
-                    .padding(.vertical, 40)
+                    .font(.largeTitle)
+                    .padding(.vertical, 30)
                     .frame(maxWidth: .infinity)
                     .background(Color.orange)
                     
