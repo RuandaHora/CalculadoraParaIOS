@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct CalculatorView: View {
+    
+    @State var values = "0"
     @State var previous = 0.0
     @State var result = 0.0
+    @State var decimal = 0.0
     
     @State var operation = 0
     @State var previousOperation = 0
@@ -28,6 +31,8 @@ struct CalculatorView: View {
         }
     
         result = (result * 10) + Double(digit)
+        values = removeZerosFromEnd(value: result)
+        
     }
     func reset (){
      operation=0
@@ -58,7 +63,7 @@ struct CalculatorView: View {
             Text("\(String(result).count)")
             Spacer()
             HStack{
-                Text(String(removeZerosFromEnd(value: result)))
+                Text(values)
                 .padding(.vertical, 20)
                 .lineLimit(1)
                 .font(.system(size: CGFloat(80/Int((Double(String(result).count + 10) / 8.0)))))
@@ -212,6 +217,10 @@ struct CalculatorView: View {
                     
                     
                     Button(",") {
+                        if decimal == 0 {
+                            decimal = 10.0
+                            values = values + "."
+                        }
                     }
                     .padding(.vertical, 40)
                     .frame(maxWidth: .infinity)
