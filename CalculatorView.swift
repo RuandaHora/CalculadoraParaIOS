@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct CalculatorView: View {
-    @State var previous = 0
-    @State var result = 0
+    @State var previous = 0.0
+    @State var result = 0.0
     
     @State var operation = 0
     @State var previousOperation = 0
-    
+    func removeZerosFromEnd(value: Double) -> String{
+        let f = NumberFormatter()
+        let number = NSNumber(value: value)
+        f.minimumFractionDigits = 0
+        f.maximumFractionDigits=16
+        return f.string(from: number) ?? ""
+    }
     func process(digit: Int){
         if operation > 0 {
             result = 0
@@ -21,7 +27,7 @@ struct CalculatorView: View {
             operation = -1
         }
     
-        result = (result * 10) + digit
+        result = (result * 10) + Double(digit)
     }
     func reset (){
      operation=0
@@ -33,10 +39,18 @@ struct CalculatorView: View {
        if previousOperation == 1{//soma
           result = previous + result
            previousOperation = 0
-       } else if previousOperation == 2 {
+       } else if previousOperation == 2 { //Subtração
            result = previous - result
            previousOperation=0
        }
+        else if previousOperation == 3 { //Multiplicação
+            result = previous * result
+            previousOperation=0
+        }
+        else if previousOperation == 4 {//Divisão
+            result = previous / result
+            previousOperation=0
+        }
         previous = result
     }
     var body: some View {
