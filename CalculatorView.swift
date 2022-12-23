@@ -23,11 +23,20 @@ struct CalculatorView: View {
     
         result = (result * 10) + digit
     }
+    func reset (){
+     operation=0
+       previousOperation=0
+        result=0
+        previous=0
+    }
     func calculate() {
        if previousOperation == 1{//soma
           result = previous + result
            previousOperation = 0
-        }
+       } else if previousOperation == 2 {
+           
+           
+       }
         previous = result
     }
     var body: some View {
@@ -46,7 +55,7 @@ struct CalculatorView: View {
             HStack (spacing: 1){
                 
                 Button("AC") {
-                    result=0
+                    reset()
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
@@ -54,18 +63,24 @@ struct CalculatorView: View {
                 
                 
                 Button("+/-") {
+                    calculate()
+                    operation=6
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 .background(Color.gray)
                 
                 Button("%") {
+                    calculate()
+                    operation=5
                 }
                 .padding(.vertical, 40)
                 .frame(maxWidth: .infinity)
                 .background(Color.gray)
                 
                 Button("÷") {
+                    calculate()
+                    operation=4
                 }
                 .font(.largeTitle)
                 .padding(.vertical, 30)
@@ -97,6 +112,8 @@ struct CalculatorView: View {
                 
                 
                 Button("X") {
+                    calculate()
+                    operation=3
                 }
                 .font(.title2)
                 .padding(.vertical, 40)
@@ -128,6 +145,8 @@ struct CalculatorView: View {
                 
                 
                 Button("-") {
+                    calculate()
+                    operation=2
                 }
                 .padding(.vertical, 30)
                 .frame(maxWidth: .infinity)
@@ -172,7 +191,7 @@ struct CalculatorView: View {
                 HStack (spacing: 1){
                     
                     Button("0") {
-                        result += (result * 10) + 0
+                        process(digit: 0)
                     }
                     .padding(.vertical, 40)
                     .frame(minWidth: geometry.size.width/2)
@@ -185,6 +204,9 @@ struct CalculatorView: View {
                     
                     
                     Button("=") {
+                        calculate()
+                        previousOperation=999
+                        operation=999
                     }
                     .font(.largeTitle)
                     .padding(.vertical, 30)
