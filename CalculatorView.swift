@@ -34,8 +34,8 @@ struct CalculatorView: View {
           result = previous + result
            previousOperation = 0
        } else if previousOperation == 2 {
-           
-           
+           result = previous - result
+           previousOperation=0
        }
         previous = result
     }
