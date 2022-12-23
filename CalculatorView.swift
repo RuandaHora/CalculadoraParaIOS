@@ -58,7 +58,7 @@ struct CalculatorView: View {
             Text("\(String(result).count)")
             Spacer()
             HStack{
-                Text(String(result))
+                Text(String(removeZerosFromEnd(value: result)))
                 .padding(.vertical, 20)
                 .lineLimit(1)
                 .font(.system(size: CGFloat(80/Int((Double(String(result).count + 10) / 8.0)))))
