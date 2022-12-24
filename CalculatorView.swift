@@ -20,7 +20,7 @@ struct CalculatorView: View {
         let f = NumberFormatter()
         let number = NSNumber(value: value)
         f.minimumFractionDigits = 0
-        f.maximumFractionDigits=16
+        f.maximumFractionDigits = 30
         return f.string(from: number) ?? ""
     }
     func process(digit: Int){
@@ -47,7 +47,7 @@ struct CalculatorView: View {
             values="0"
         }
         func calculate() {
-            if previousOperation == 1{//soma
+            if previousOperation == 1{//Soma
                 result = previous + result
                 previousOperation = 0
             } else if previousOperation == 2 { //Subtração
@@ -68,7 +68,7 @@ struct CalculatorView: View {
         }
         var body: some View {
             VStack (alignment: .trailing, spacing: 1){
-                Text("\(String(result).count)")
+                
                 Spacer()
                 HStack{
                     Text(values)
@@ -90,6 +90,7 @@ struct CalculatorView: View {
                     
                     
                     Button("+/-") {
+                        result = result * -1
                         calculate()
                         operation=6
                     }
@@ -98,6 +99,7 @@ struct CalculatorView: View {
                     .background(Color.gray)
                     
                     Button("%") {
+                        result=result / 100
                         calculate()
                         operation=5
                     }
@@ -236,8 +238,8 @@ struct CalculatorView: View {
                         
                         Button("=") {
                             calculate()
-                            previousOperation=999
-                            operation=999
+                            previousOperation=9999
+                            operation=9999
                         }
                         .font(.largeTitle)
                         .padding(.vertical, 30)
