@@ -79,42 +79,45 @@ struct CalculatorView: View {
                         .frame(maxWidth: .infinity)
                         .fixedSize(horizontal:true, vertical: false )
                 }
+                    
                 HStack (spacing: 1){
+                        Button("AC") {
+                            reset()
+                        }
+                        .padding(.vertical, 40)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray)
+                        .cornerRadius(100.0)
+                        
+                        Button("+/-") {
+                            result = result * -1
+                            calculate()
+                            operation=6
+                        }
+                        .padding(.vertical, 40)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray)
+                        .cornerRadius(100.0)
                     
-                    Button("AC") {
-                        reset()
-                    }
-                    .padding(.vertical, 40)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.gray)
-                    
-                    
-                    Button("+/-") {
-                        result = result * -1
-                        calculate()
-                        operation=6
-                    }
-                    .padding(.vertical, 40)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.gray)
-                    
-                    Button("%") {
-                        result=result / 100
-                        calculate()
-                        operation=5
-                    }
-                    .padding(.vertical, 40)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.gray)
-                    
-                    Button("÷") {
-                        calculate()
-                        operation=4
-                    }
-                    .font(.largeTitle)
-                    .padding(.vertical, 30)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.orange)
+                        Button("%") {
+                            result=result / 100
+                            calculate()
+                            operation=5
+                        }
+                        .padding(.vertical, 40)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.gray)
+                        .cornerRadius(100.0)
+                        
+                    Button("/") {
+                            calculate()
+                            operation=4
+                        }
+                        .font(.largeTitle)
+                        .padding(.vertical, 30)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.orange)
+                        .cornerRadius(100.0)
                     
                 }.foregroundColor(Color.white)
                 HStack (spacing: 1){
@@ -148,6 +151,7 @@ struct CalculatorView: View {
                     .padding(.vertical, 40)
                     .frame(maxWidth: .infinity)
                     .background(Color.orange)
+                    .cornerRadius(100.0)
                     
                 }.foregroundColor(Color.white)
                 HStack (spacing: 1){
@@ -181,6 +185,7 @@ struct CalculatorView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.orange)
                     .font(.largeTitle)
+                    .cornerRadius(100.0)
                     
                 }.foregroundColor(Color.white)
                 HStack (spacing: 1){
@@ -214,6 +219,7 @@ struct CalculatorView: View {
                     .padding(.vertical, 30)
                     .frame(maxWidth: .infinity)
                     .background(Color.orange)
+                    .cornerRadius(100.0)
                     
                 }.foregroundColor(Color.white)
                 GeometryReader { geometry in
@@ -245,9 +251,10 @@ struct CalculatorView: View {
                         .padding(.vertical, 30)
                         .frame(maxWidth: .infinity)
                         .background(Color.orange)
-                        
+                        .cornerRadius(100.0)
+                    
                     }.foregroundColor(Color.white)
-                }.frame(maxHeight: 60)
+                }.frame(maxHeight: 80)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.black)
